@@ -1,6 +1,6 @@
-function PinnedMessages({ messages }) {
+function PinnedMessages({ messages = [] }) {
   const pinnedMessages = messages.filter(
-    (msg) => msg.isPinned && !msg.isDeletedForEveryone
+    (msg) => msg && msg.isPinned && !msg.isDeletedForEveryone
   );
 
   if (pinnedMessages.length === 0) return null;

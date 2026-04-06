@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import MessageBubble from './MessageBubble';
 
 function ChatWindow({
-  messages,
+  messages = [],
   userId,
   onDeleteForMe,
   onDeleteForEveryone,

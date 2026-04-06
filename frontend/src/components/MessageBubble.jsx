@@ -9,6 +9,10 @@ function MessageBubble({
   onTogglePin
 }) {
   const [showDeleteMenu, setShowDeleteMenu] = useState(false);
+
+  // Guard: prevent crash if message is undefined
+  if (!message) return null;
+
   const isDeleted = message.isDeletedForEveryone;
 
   const formatTime = (timestamp) => {
