@@ -107,10 +107,15 @@ function App() {
   const handleDeleteForMe = useCallback(async (messageId) => {
     try {
       await deleteForMe(messageId, userId);
+
+      setMessages(prev =>
+        prev.filter(msg => msg._id !== messageId)
+      );
+
     } catch (err) {
       console.error('Failed to delete for me:', err);
     }
-  }, [userId]);
+  }, [userId, setMessages]);
 
   const handleDeleteForEveryone = useCallback(async (messageId) => {
     try {

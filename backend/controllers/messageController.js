@@ -40,7 +40,7 @@ const getMessages = async (req, res) => {
 
     let messages = await Message.find({
       deletedFor: { $nin: [userId] },
-    }).sort({ isPinned: -1, timestamp: 1, _id: 1 });
+    }).sort({ timestamp: 1, _id: 1 });
 
     messages = messages.map((msg) => {
       const obj = msg.toObject();
