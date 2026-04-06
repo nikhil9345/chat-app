@@ -44,11 +44,7 @@ function App() {
     socket.on('receiveMessage', (message) => {
       setMessages((prev) => {
         if (prev.find((m) => m._id === message._id)) return prev;
-        const updated = [...prev, message];
-        return updated.sort((a, b) => {
-          if (a.isPinned !== b.isPinned) return b.isPinned - a.isPinned;
-          return new Date(a.timestamp) - new Date(b.timestamp);
-        });
+        return [...prev, message];
       });
     });
 
