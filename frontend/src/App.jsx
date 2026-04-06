@@ -67,15 +67,13 @@ function App() {
     });
 
     socket.on('messagePinned', ({ messageId, isPinned }) => {
-      setMessages((prev) => {
-        const updated = prev.map((msg) =>
-          msg._id === messageId ? { ...msg, isPinned } : msg
-        );
-        return updated.sort((a, b) => {
-          if (a.isPinned !== b.isPinned) return b.isPinned - a.isPinned;
-          return new Date(a.timestamp) - new Date(b.timestamp);
-        });
-      });
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg._id === messageId
+            ? { ...msg, isPinned }
+            : msg
+        )
+      );
     });
 
     return () => {
